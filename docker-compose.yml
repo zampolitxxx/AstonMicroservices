@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  service1:
+    build:
+      context: ./service1
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - service1-db
+      - service2
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://service1-db:5432/service1
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SERVICE2_URL=http://service2:8082
+    networks:
+      - microservices-network
+
+  service1-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=service1
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - service1-data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
+  service2:
+    build:
+      context: ./service2
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - service2-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://service2-db:5432/service2
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    networks:
+      - microservices-network
+
+  service2-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=service2
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - service2-data:/var/lib/postgresql/data
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    driver: bridge
+
+volumes:
+  service1-data:
+  service2-data:
