@@ -20,6 +20,8 @@ repositories {
 }
 
 dependencies {
+    implementation("org.apache.kafka:kafka-clients:3.6.1")
+    implementation("org.springframework.kafka:spring-kafka:3.1.2")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("org.postgresql:postgresql")
