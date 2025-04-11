@@ -21,7 +21,6 @@ public class KafkaMessage {
     @Column(nullable = false)
     private LocalDateTime receivedAt;
 
-    // Конструкторы, геттеры и сеттеры
     public KafkaMessage() {
 
     }
@@ -31,7 +30,6 @@ public class KafkaMessage {
         this.receivedAt = LocalDateTime.now();
     }
 
-    // Геттеры и сеттеры
     public Long getId() {
         return id;
     }

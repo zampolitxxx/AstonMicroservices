@@ -7,7 +7,6 @@ This training project consists of two microservices. The first one accepts reque
 3. Docker
 
 ### Deploying the application.
-For deploy the application your need:
 1. Clone the project to your own computer:
 ```bash
 git clone https://github.com/zampolitxxx/AstonMicroservices.git 
@@ -20,7 +19,7 @@ cd AstonMicroservices
 ```bash
 gradle wrapper
 ```
-4. Build the application^
+4. Build the application:
 ```bash
 ./gradlew :service1:build
 ./gradlew :service2:build
