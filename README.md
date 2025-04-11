@@ -29,3 +29,10 @@ gradle wrapper
 ```bash
 docker compose up --build 
 ```
+
+### How to check
+for check application you need to use next commands:
+```bash
+curl http://localhost:8081/api/service1
+curl http://localhost:8082/api/service2
+```
