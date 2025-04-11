@@ -70,14 +70,14 @@ public class Service2Controller {
     private String pollMessage(Consumer<String, String> consumer, String topic) {
         ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(5));
 
-        KafkaMessage lastDataFromDB = messageService.getLastMessageWithNative();
+        KafkaMessage lastDataFromDB = messageService.findFirstByOrderById();
         String messFromDB = lastDataFromDB.getContent();
 
         for (ConsumerRecord<String, String> record : records) {
             if (topic.equals(record.topic())) {
                 consumer.commitSync();
                 return "Kafka message: " + record.value() + " (partition: " + record.partition() + ")\n"
-                        + "Last message from DB: " + messFromDB + "\n";
+                        + "First message from DB: " + messFromDB + "\n";
             }
         }
         return "No messages found in Kafka topic: " + topic;
