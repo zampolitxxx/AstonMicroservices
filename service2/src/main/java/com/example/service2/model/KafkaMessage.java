@@ -1,6 +1,11 @@
 package com.example.service2.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,7 +22,9 @@ public class KafkaMessage {
     private LocalDateTime receivedAt;
 
     // Конструкторы, геттеры и сеттеры
-    public KafkaMessage() {}
+    public KafkaMessage() {
+
+    }
 
     public KafkaMessage(String content) {
         this.content = content;
@@ -25,11 +32,23 @@ public class KafkaMessage {
     }
 
     // Геттеры и сеттеры
-    public Long getId() { return id; }
-    public String getContent() { return content; }
-    public LocalDateTime getReceivedAt() { return receivedAt; }
+    public Long getId() {
+        return id;
+    }
+    public String getContent() {
+        return content;
+    }
+    public LocalDateTime getReceivedAt() {
+        return receivedAt;
+    }
 
-    public void setId(Long id) { this.id = id; }
-    public void setContent(String content) { this.content = content; }
-    public void setReceivedAt(LocalDateTime receivedAt) { this.receivedAt = receivedAt; }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setContent(String content) {
+        this.content = content;
+    }
+    public void setReceivedAt(LocalDateTime receivedAt) {
+        this.receivedAt = receivedAt;
+    }
 }

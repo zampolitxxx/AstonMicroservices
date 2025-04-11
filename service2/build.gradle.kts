@@ -1,7 +1,13 @@
 plugins {
     id("org.springframework.boot") version "3.2.4"
     id("io.spring.dependency-management") version "1.1.4"
+    id("checkstyle")
     java
+}
+
+checkstyle {
+    configFile = file("${rootDir}/config/checkstyle/checkstyle.xml") // путь должен быть правильным
+    toolVersion = "10.20.0" // или другая версия
 }
 
 group = "com.example"

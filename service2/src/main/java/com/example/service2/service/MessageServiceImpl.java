@@ -9,20 +9,20 @@ import org.springframework.stereotype.Service;
 public class MessageServiceImpl implements MessageService {
 
     @Autowired
-    private KafkaMessageRepository KafkaMessageRepo;
+    private KafkaMessageRepository kafkaMessageRepo;
 
     @Override
     public KafkaMessage findLastByOrderById() {
-        return KafkaMessageRepo.findLastByOrderById();
+        return kafkaMessageRepo.findLastByOrderById();
     }
 
     @Override
     public KafkaMessage findFirstByOrderById() {
-        return KafkaMessageRepo.findFirstByOrderById();
+        return kafkaMessageRepo.findFirstByOrderById();
     }
 
     @Override
     public KafkaMessage getLastMessageWithNative() {
-        return KafkaMessageRepo.findLastOrderNative();
+        return kafkaMessageRepo.findLastOrderNative();
     }
 }

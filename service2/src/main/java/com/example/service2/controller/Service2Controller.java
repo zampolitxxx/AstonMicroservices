@@ -76,8 +76,8 @@ public class Service2Controller {
         for (ConsumerRecord<String, String> record : records) {
             if (topic.equals(record.topic())) {
                 consumer.commitSync();
-                return "Kafka message: " + record.value() + " (partition: " + record.partition() + ")\n" +
-                        "Last message from DB: " + messFromDB + "\n";
+                return "Kafka message: " + record.value() + " (partition: " + record.partition() + ")\n"
+                        + "Last message from DB: " + messFromDB + "\n";
             }
         }
         return "No messages found in Kafka topic: " + topic;
